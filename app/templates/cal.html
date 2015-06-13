@@ -8,3 +8,7 @@
 <div class="seven-cols" ng-repeat="day in days">
     <div class="col-md-1 border">{{day}}</div>
 </div>
+<div class="seven-cols" ng-repeat="day in daysList() track by $index">
+    <div class="col-md-1" ng-if="day !== 0"><a href="#" ng-click="displayDate(day)">{{day}}</a></div>
+    <div class="col-md-1" ng-if="day === 0">&nbsp;</div>
+</div>

@@ -9,12 +9,45 @@ app.controller('CalendarController', function($scope){
   $scope.year = $scope.today.getFullYear();
   $scope.day = $scope.today.getDate();
 
-  $scope.startDayOfMonth = function(m, d, y) {
-    return new Date(y, m, d).getDate();
+  $scope.startDayOfMonth = function(m, y) {
+    return new Date(y, m, 1).getUTCDay();
   };
   $scope.daysInMonth = function(m, y) {
     return new Date(y, (m+1), 0).getDate();
   };
+
+  $scope.daysList = function () {
+    var arr = [];
+    var numDays = $scope.daysInMonth($scope.month, $scope.year);
+    var padding = $scope.firstDay().getDay();
+
+    for (var i = 0; i < padding; i++) {
+      arr.push(0);
+    }
+
+    for (var i = 1; i <= numDays; i++) {
+      arr.push(i);
+    }
+    console.log(arr.length);
+    return arr;
+  };
+
+  $scope.numberOfWeeks = function() {
+    var firstDay = $scope.firstDay();
+    var lastDay = new Date($scope.year, $scope.month + 1, 0);
+    var numWeeks = Math.ceil((firstDay.getDay() + lastDay.getDate()) / 7);
+
+    var arr = [];
+    for(var i = 0; i < numWeeks; i++) {
+      arr.push(i);
+    }
+    return arr;
+  };
+
+  $scope.firstDay = function() {
+    return new Date($scope.year, $scope.month, 1);
+  };
+
   $scope.previousMonth = function() {
     if ($scope.month === 0) {
       $scope.month = 11;
@@ -23,8 +56,9 @@ app.controller('CalendarController', function($scope){
     else {
       $scope.month = $scope.month - 1;
     }
-
+    $scope.updateCalendar();
   };
+
   $scope.nextMonth = function() {
     if ($scope.month === 11) {
       $scope.month = 0;
@@ -33,7 +67,20 @@ app.controller('CalendarController', function($scope){
     else {
       $scope.month = $scope.month + 1;
     }
+    $scope.updateCalendar();
   };
+
+  $scope.updateCalendar = function() {
+    $scope.startDayOfMonth($scope.month, $scope.year);
+    $scope.daysInMonth($scope.month, $scope.year);
+    $scope.daysList($scope.month, $scope.year);
+    $scope.numberOfWeeks();
+  };
+
+  $scope.displayDate = function(day) {
+    alert('Date is ' + $scope.month + '/' + day + '/' + $scope.year);
+  };
+
 });
 app.directive('calendar', function() {
   return {
