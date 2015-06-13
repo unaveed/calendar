@@ -1,1 +1,10 @@
-<div></div>
+<div class="border">
+    <div class="col-md-2 left"><h3><a href="#" ng-click="previousMonth()"><i class="glyphicon glyphicon-chevron-left"></i></a></h3></div>
+    <div class="col-md-8">
+        <h3 class="text-center">{{months[month]}} {{year}}</h3>
+    </div>
+    <div class="col-md-2 right"><h3><a href="#" ng-click="nextMonth()"><i class="glyphicon glyphicon-chevron-right"></i></a></h3></div>
+</div>
+<div class="seven-cols" ng-repeat="day in days">
+    <div class="col-md-1 border">{{day}}</div>
+</div>
