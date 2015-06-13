@@ -11,7 +11,7 @@ AngularJS 1.3.x or later. You can download or use a CDN from here:
 https://angularjs.org/
 
 ### Installation
-To use on your website grab the grab app.css and app.js and add them to your web sites directory. Place the template folder at the same level as the previous two files. 
+To use on your website grab app.css, app.js and the templates folder. Place them in the desired directory and reference app.css, app.js in your web page. 
 
 Inside your HTML page add the following tag where ever you want to calendar to appear. 
 ```
