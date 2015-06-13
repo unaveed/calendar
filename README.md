@@ -13,7 +13,7 @@ https://angularjs.org/
 ### Installation
 To use on your website grab app.css, app.js and the templates folder. Place them in the desired directory and reference app.css, app.js in your web page. 
 
-Inside your HTML page add the following tag where ever you want to calendar to appear. 
+Inside your HTML page add the following tag where ever you want the calendar to appear. 
 ```
 <calendar></calendar>
 ````
