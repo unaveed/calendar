@@ -2,15 +2,20 @@ var app = angular.module('calendarApp', []);
 
 app.controller('CalendarController', function($scope){
   $scope.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  $scope.months = ['January','February', 'March', 'April', 'May', 'June', 'July', 'August',
-                  'September', 'October', 'November', 'December'];
+  $scope.months = [{0:'January'},{1:'February'}, {2:'March'}, {3:'April'}, {4:'May'}, {5:'June'}, {6:'July'}, {7:'August'},
+    {8:'September'}, {9:'October'}, {10:'November'}, {11:'December'}];
   $scope.today = new Date();
   $scope.month = $scope.today.getMonth();
   $scope.year = $scope.today.getFullYear();
+  $scope.day = $scope.today.getDay();
+
+  $scope.selectedDate = $scope.today;
 
   $scope.currentDay = $scope.today.getDate();
   $scope.currentMonth = $scope.today.getMonth();
   $scope.currentYear = $scope.today.getFullYear();
+
+  $scope.showText = true;
 
   $scope.startDayOfMonth = function(m, y) {
     return new Date(y, m, 1).getUTCDay();
@@ -77,6 +82,10 @@ app.controller('CalendarController', function($scope){
     }
     $scope.updateCalendar();
   };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.selectedDate = new Date(year, month, day);
+  }
 
   $scope.updateCalendar = function() {
     $scope.startDayOfMonth($scope.month, $scope.year);

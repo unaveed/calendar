@@ -31,6 +31,17 @@ body {
   padding: 0;
 }
 
+#calendar-container {
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+#calendar-header {
+  border: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
 .calendar-bg  {
   background-color: #434a54;
 }
@@ -50,12 +61,21 @@ body {
 }
 
 .week-border {
-  border-bottom: 3px solid #656D78;
+  border-bottom: 2px solid #656D78;
   color: #aab2bd;
 }
 
 .arrow {
   color: #ffffff;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+.footer-label {
+  background-color: #ffffff;
+  border-radius: 60px;
 }
 
 .day-display {
@@ -84,6 +104,38 @@ a.day-display:hover {
   background-color: #37BC9B;
 }
 
+#footer-today {
+  border-radius: 60px;
+  padding: 10px;
+  margin-top: 10px;
+  bottom: 0px;
+  background-color: #ffffff;
+  color: #434a54;
+}
+
+#footer-today:hover {
+  background-color: #97C02F;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.cal-addon {
+  position: relative;
+}
+
+.cal-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+}
+
+.right-addon .glyphicon {
+  right: 10px;
+}
+
+.right-addon input {
+  padding-right: 20px;
+}
+
 @media (min-width: 768px){
   .seven-cols .col-md-1,
   .seven-cols .col-sm-1,
@@ -103,7 +155,7 @@ a.day-display:hover {
 }
 
 .days {
-  border: 1px solid #000;
+  border: 1px solid #000000;
 }
 
 .border {
