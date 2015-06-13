@@ -7,7 +7,10 @@ app.controller('CalendarController', function($scope){
   $scope.today = new Date();
   $scope.month = $scope.today.getMonth();
   $scope.year = $scope.today.getFullYear();
-  $scope.day = $scope.today.getDate();
+
+  $scope.currentDay = $scope.today.getDate();
+  $scope.currentMonth = $scope.today.getMonth();
+  $scope.currentYear = $scope.today.getFullYear();
 
   $scope.startDayOfMonth = function(m, y) {
     return new Date(y, m, 1).getUTCDay();
@@ -20,6 +23,7 @@ app.controller('CalendarController', function($scope){
     var arr = [];
     var numDays = $scope.daysInMonth($scope.month, $scope.year);
     var padding = $scope.firstDay().getDay();
+    var endpadding = ($scope.numberOfWeeks().length * 7) - (numDays + padding);
 
     for (var i = 0; i < padding; i++) {
       arr.push(0);
@@ -28,7 +32,11 @@ app.controller('CalendarController', function($scope){
     for (var i = 1; i <= numDays; i++) {
       arr.push(i);
     }
-    console.log(arr.length);
+
+    for (var i = 0; i < endpadding; i++) {
+      arr.push(0);
+    }
+
     return arr;
   };
 
@@ -81,6 +89,10 @@ app.controller('CalendarController', function($scope){
     alert('Date is ' + $scope.month + '/' + day + '/' + $scope.year);
   };
 
+  $scope.displayToday = function() {
+    $scope.month = $scope.today.getMonth();
+    $scope.year = $scope.today.getFullYear();
+  };
 });
 app.directive('calendar', function() {
   return {

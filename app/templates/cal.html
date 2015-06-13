@@ -1,14 +1,27 @@
-<div class="border">
-    <div class="col-md-2 left"><h3><a href="#" ng-click="previousMonth()"><i class="glyphicon glyphicon-chevron-left"></i></a></h3></div>
-    <div class="col-md-8">
-        <h3 class="text-center">{{months[month]}} {{year}}</h3>
+<div class="panel panel-default calendar-bg">
+    <div class="panel-heading">
+        <div class="row">
+            <h3 class="col-xs-2 col-sm-2 col-md-2 text-left"><a href="#" ng-click="previousMonth()"><i class="glyphicon glyphicon-circle-arrow-left arrow"></i></a></h3>
+            <h3 class="col-xs-8 col-sm-2 col-md-8 pane-title text-center">{{months[month]}} {{year}}</h3>
+            <h3 class="col-xs-2 col-sm-2 col-md-2 text-right"><a href="#" ng-click="nextMonth()"><i class="glyphicon glyphicon-circle-arrow-right arrow"></i></a></h3>
+        </div>
     </div>
-    <div class="col-md-2 right"><h3><a href="#" ng-click="nextMonth()"><i class="glyphicon glyphicon-chevron-right"></i></a></h3></div>
-</div>
-<div class="seven-cols" ng-repeat="day in days">
-    <div class="col-md-1 border">{{day}}</div>
-</div>
-<div class="seven-cols" ng-repeat="day in daysList() track by $index">
-    <div class="col-md-1" ng-if="day !== 0"><a href="#" ng-click="displayDate(day)">{{day}}</a></div>
-    <div class="col-md-1" ng-if="day === 0">&nbsp;</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="seven-cols" ng-repeat="day in days">
+                <div class="col-xs-1 col-sm-1 col-md-1 text-center week-border"><h4 class="days-of-week">{{day}}</h4></div>
+            </div>
+            <div class="seven-cols" ng-repeat="day in daysList() track by $index">
+                <!--<div class="col-xs-1 col-sm-1 col-md-1 text-center {{($index + 1) % 7 !== 0 ? 'day-display' : 'day-display-edge'}} {{(day === currentDay && month === currentMonth && year === currentYear) ? 'note' : ''}}" ng-if="day !== 0">-->
+                    <a class="col-xs-1 col-sm-1 col-md-1 text-center {{($index + 1) % 7 !== 0 ? 'day-display' : 'day-display edge'}} {{(day === currentDay && month === currentMonth && year === currentYear) ? 'note' : ''}}" ng-if="day !== 0" href="#" ng-click="displayDate(day)">{{day}}</a>
+                <!--</div>-->
+                <div class="col-xs-1 col-sm-1 col-md-1 {{($index + 1) % 7 !== 0 ? 'day-display' : 'day-display edge'}}" ng-if="day === 0">&nbsp;</div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="footer text-center">
+                    <h4><a href="#" ng-click="displayToday()">Today</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
